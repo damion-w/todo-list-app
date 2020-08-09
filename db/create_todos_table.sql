@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS todos (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description VARCHAR(255) DEFAULT NULL,
+    category VARCHAR(255) DEFAULT NULL,
+    status VARCHAR(255) DEFAULT 'To Do',
+    user_id INTEGER NOT NULL);
