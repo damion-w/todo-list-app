@@ -13,7 +13,7 @@ const userController = {
                     {
                         message: 'ok',
                         data: {
-                            user_bro: user
+                            user: user
                         }
                     }
                 )
