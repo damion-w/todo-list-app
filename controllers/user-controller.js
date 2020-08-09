@@ -3,11 +3,21 @@ const User = require('../models/user')
 const userController = {
     show: (req, res, next) => {
         User.getById(req.params.id)
+            // .then((user) => {
+            //     res.locals.user = user
+            //     next()
+            // })
+            // .catch((err) => next(err))
             .then((user) => {
-                res.locals.user = user
-                next()
+                res.json(
+                    {
+                        message: 'ok',
+                        data: {
+                            user: user
+                        }
+                    }
+                )
             })
-            .catch((err) => next(err))
     }
 }
 

@@ -4,8 +4,7 @@ CREATE TABLE IF NOT EXISTS todos (
     description VARCHAR(255) DEFAULT NULL,
     category VARCHAR(255) DEFAULT NULL,
     status VARCHAR(255) DEFAULT 'To Do',
-    user_id INTEGER NOT NULL
-);
+    user_id INTEGER NOT NULL);
 
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
@@ -13,5 +12,4 @@ CREATE TABLE IF NOT EXISTS users (
     last_name VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
-    password_digest text,
-);
+    password_digest text);

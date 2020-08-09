@@ -17,6 +17,8 @@ app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
 })
 
+app.use('/user', userRouter);
+
 app.get('/', (req, res) => {
     res.json(
         {
@@ -25,4 +27,3 @@ app.get('/', (req, res) => {
     })
 })
 
-app.use('/user', userRouter);
