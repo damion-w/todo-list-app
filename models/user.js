@@ -3,11 +3,11 @@ const db = require('../db/config')
 class User {
     constructor(user) {
         this.id = user.id || null,
-        this.title = user.title || null,
-        this.description = user.description  || null,
-        this.category = user.categorystatus || null, 
-        this.status = user.status  || 'To do',
-        this.user_id = user.user_id
+        this.firstName = user.firstName,
+        this.lastName = user.lastName,
+        this.username = user.username, 
+        this.email = user.email,
+        this.password_digest = user.password_digest
     }
 
     static getById(id) {
