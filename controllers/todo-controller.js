@@ -68,7 +68,28 @@ const todoController = {
                     }
                 )
             })
+    },
+
+    update: (req, res, next) => {
+        ToDo.getById(req.params.id)
+            .then((todo) => {
+                return todo.update(req.body)
+            })
+            .then((updatedToDo) => {
+                res.json(
+                    {
+                        message: 'ok',
+                        data: {
+                            updatedToDo
+                        }
+                    }
+                )
+            })
+            })
+
     }
+
+
 }
 
 module.exports = todoController

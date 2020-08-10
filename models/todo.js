@@ -43,6 +43,18 @@ class ToDo {
             `DELETE FROM todos where id = $1;`
             , this.id)
     }
+
+    update(updatedToDo) {
+        Object.assign(this, updatedToDo);
+
+        return db.oneOrNone(
+            `UPDATE todos SET title = $/title/, description = $/description/, category = $/category/, status = $/status/, user_id = $/user_id/ WHERE id = $/id/ RETURNING *;`
+            , this)
+            .then((todo) => {
+                return Object.assign(this, todo)
+            })
+        )
+    }
 }
 
 module.exports = ToDo;
