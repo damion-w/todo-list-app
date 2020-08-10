@@ -14,6 +14,21 @@ const todoController = {
                 )
             })
             .catch(next)
+    },
+
+    show: (req, res, next) => {
+        ToDo.getById(req.params.id)
+            .then((todo) => {
+                res.json(
+                    {
+                        message: 'ok',
+                        data: {
+                            todo
+                        }
+                    }
+                )
+            })
+            .catch(next)
     }
 }
 

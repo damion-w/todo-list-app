@@ -18,6 +18,16 @@ class ToDo {
             return todos.map((el) => { return new this(el) })
         })
     }
+
+    static getById(id) {
+        return db.oneOrNone(
+            `SELECT * FROM todos WHERE id = $1`
+            , id)
+            .then((todo) => {
+                if (todo) return new this(todo)
+                throw new Error('Animal not found')
+            })
+    }
 }
 
 module.exports = ToDo;
