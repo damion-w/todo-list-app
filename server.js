@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
 const userRouter = require('./routes/user-router')
+const todoRouter = require('./routes/todo-router')
+
 
 app.use(methodOverride('_method'))
 app.use(logger('dev'))
@@ -17,8 +19,6 @@ app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
 })
 
-app.use('/user', userRouter);
-
 app.get('/', (req, res) => {
     res.json(
         {
@@ -27,3 +27,13 @@ app.get('/', (req, res) => {
     })
 })
 
+app.use('/todo', todoRouter)
+app.use('/user', userRouter);
+
+app.get('*', (req, res) => {
+    res.status(404).send({ err: 'Not found' });
+})
+
+app.get((err, req, res, next) => {
+    res.status(500).send({ err, message: err.message })
+})
