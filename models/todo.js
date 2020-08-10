@@ -7,7 +7,7 @@ class ToDo {
         this.description = todo.description,
         this.category = todo.category,
         this.status = todo.status,
-        this.user_id = todo.userId 
+        this.user_id = todo.user_id 
     }
 
     static getAll() {
