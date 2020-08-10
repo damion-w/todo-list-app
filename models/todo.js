@@ -21,12 +21,27 @@ class ToDo {
 
     static getById(id) {
         return db.oneOrNone(
-            `SELECT * FROM todos WHERE id = $1`
+            `SELECT * FROM todos WHERE id = $1;`
             , id)
             .then((todo) => {
                 if (todo) return new this(todo)
                 throw new Error('Animal not found')
             })
+    }
+
+    save() {
+        return db.one(
+            `INSERT INTO todos (title, description, category, status, user_id) VALUES ($/title/, $/description/, $/category/, $/status/, $/user_id/) RETURNING *;`
+            , this)
+            .then((todo) => {
+                return Object.assign(this, todo)
+            })
+    }
+
+    delete() {
+        return db.oneOrNone(
+            `DELETE FROM todos where id = $1;`
+            , this.id)
     }
 }
 
