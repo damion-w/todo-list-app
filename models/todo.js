@@ -53,7 +53,6 @@ class ToDo {
             .then((todo) => {
                 return Object.assign(this, todo)
             })
-        )
     }
 }
 
